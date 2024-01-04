@@ -1,23 +1,24 @@
 #!/usr/bin/python3
-'''
-function with Pascal's triangle
-'''
+"""
+0-pascal_triangle
+"""
 
 
 def pascal_triangle(n):
-    '''
-    returns  list of lists of integers representing
-    Pascal's triangle of a given integer
-    '''
-    plt = []
-    if type(n) is not int or n <= 0:
-        return plt
-    for x in range(n):
-        ct = []
-        for y in range(x+1):
-            if y == 0 or y == x:
-                ct.append(1)
-            else:
-                ct.append(plt[x-1][y]+plt[x-1][y-1])
-        plt.append(ct)
-    return plt
+    """
+    Returns a list of integers
+    representing the Pascal Triangle of n
+    returns empty list if n <= 0
+    """
+    l = []
+    if n <= 0:
+        return l
+    l = [[1]]
+    for i in range(1, n):
+        temp = [1]
+        for m in range(len(l[i - 1]) - 1):
+            curr = l[i - 1]
+            temp.append(l[i - 1][m] + l[i - 1][m + 1])
+        temp.append(1)
+        l.append(temp)
+    return l
