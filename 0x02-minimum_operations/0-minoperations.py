@@ -11,13 +11,13 @@ def minOperations(n):
     """
     if n <= 1:
         return 0
+    num, div, numOfOperations = n, 2, 0
 
-    # Initialize the minimum operations array
-    min_ops = [0] + [float('inf')] * n
+    while num > 1:
+        if num % div == 0:
+            num = num / div
+            numOfOperations = numOfOperations + div
+        else:
+            div += 1
 
-    for i in range(2, n + 1):
-        for j in range(1, i):
-            if i % j == 0:
-                min_ops[i] = min(min_ops[i], min_ops[j] + i // j)
-
-    return min_ops[n]
+    return numOfOperations
