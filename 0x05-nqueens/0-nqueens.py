@@ -23,7 +23,7 @@ if __name__ == '__main__':
     placed_queens = []
     stop = False
     r = 0
-    c = 0    
+    c = 0
     while r < n:
         goback = False
         while c < n:
